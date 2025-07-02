@@ -1,0 +1,60 @@
+# C-Keeper Requirements
+# Core dependencies for the cyber kill chain engine
+
+# Core Python libraries
+PyYAML>=6.0                  # Configuration management
+requests>=2.28.0             # HTTP requests
+urllib3>=1.26.0              # HTTP client
+
+# Network and security libraries
+python-nmap>=0.7.1           # Network scanning
+paramiko>=3.0.0              # SSH client
+scapy>=2.5.0                 # Packet manipulation
+ipaddress>=1.0.23            # IP address manipulation
+
+# System monitoring
+psutil>=5.9.0                # Process and system utilities
+
+# Web frameworks (for C2 servers)
+flask>=2.2.0                 # Web framework for C2 server
+tornado>=6.2.0               # Asynchronous networking
+
+# Cryptography
+cryptography>=3.4.8          # Cryptographic recipes
+pycryptodome>=3.15.0         # Cryptographic algorithms
+
+# GUI dependencies (core)
+# tkinter is included with Python standard library
+matplotlib>=3.5.0            # Data visualization
+pillow>=9.0.0                # Image processing
+
+# Extended GUI dependencies
+plotly>=5.0.0                # Interactive plots
+dash>=2.0.0                  # Web-based dashboards
+
+# Report generation
+reportlab>=3.6.0             # PDF generation
+jinja2>=3.0.0                # Templating engine
+weasyprint>=56.0             # HTML to PDF conversion
+
+# Additional utilities
+colorama>=0.4.4              # Terminal colors
+rich>=12.0.0                 # Rich text and formatting in terminal
+tqdm>=4.64.0                 # Progress bars
+
+# Development and testing
+pytest>=7.0.0                # Testing framework
+pytest-cov>=4.0.0            # Test coverage
+black>=22.0.0                # Code formatting
+flake8>=5.0.0                # Linting
+
+# Documentation
+sphinx>=5.0.0                # Documentation generation
+sphinx-rtd-theme>=1.0.0      # Read the Docs theme
+
+# Optional: Install these if you're using all features
+# These are handled with optional imports in the code:
+# python-nmap - Network scanning (imported with try/except)
+# requests - HTTP client (used in multiple modules)
+# matplotlib - For data visualization in GUI
+# pillow - For image handling in GUI

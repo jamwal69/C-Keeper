@@ -1,0 +1,117 @@
+# Docker Compose for C-Keeper
+# Provides easy deployment with different configurations
+
+version: '3.8'
+
+services:
+  # Main C-Keeper service
+  ckeeper:
+    build: .
+    container_name: ckeeper-main
+    environment:
+      - DISPLAY=:99
+      - PYTHONPATH=/app
+    volumes:
+      # Persist data and logs
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+      # Share exploits and payloads
+      - ckeeper-exploits:/app/data/exploits
+      - ckeeper-payloads:/app/data/payloads
+    ports:
+      # Common C2 and web ports
+      - "4444:4444"   # Default C2 port
+      - "8080:8080"   # Web interface
+      - "8443:8443"   # HTTPS web interface
+      - "9999:9999"   # Additional C2 port
+    networks:
+      - ckeeper-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: ["python", "ckeeper.py", "--cli"]
+
+  # GUI service with X11 forwarding
+  ckeeper-gui:
+    build: .
+    container_name: ckeeper-gui
+    environment:
+      - DISPLAY=:99
+      - PYTHONPATH=/app
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+      - ckeeper-exploits:/app/data/exploits
+      - ckeeper-payloads:/app/data/payloads
+      # For X11 forwarding (Linux/macOS)
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    ports:
+      - "4445:4444"
+      - "8081:8080"
+    networks:
+      - ckeeper-network
+    profiles:
+      - gui
+    command: ["python", "ckeeper.py", "--gui"]
+
+  # Red team focused deployment
+  ckeeper-red:
+    build: .
+    container_name: ckeeper-red-team
+    environment:
+      - DISPLAY=:99
+      - PYTHONPATH=/app
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    ports:
+      - "4446:4444"
+      - "8082:8080"
+    networks:
+      - ckeeper-network
+    profiles:
+      - red-team
+    command: ["python", "ckeeper.py", "--cli", "--mode", "red"]
+
+  # Blue team focused deployment
+  ckeeper-blue:
+    build: .
+    container_name: ckeeper-blue-team
+    environment:
+      - DISPLAY=:99
+      - PYTHONPATH=/app
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    ports:
+      - "4447:4444"
+      - "8083:8080"
+    networks:
+      - ckeeper-network
+    profiles:
+      - blue-team
+    command: ["python", "ckeeper.py", "--cli", "--mode", "blue", "--monitor"]
+
+# Named volumes for persistent data
+volumes:
+  ckeeper-exploits:
+    driver: local
+  ckeeper-payloads:
+    driver: local
+
+# Custom network for C-Keeper services
+networks:
+  ckeeper-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

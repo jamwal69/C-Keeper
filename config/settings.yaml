@@ -1,0 +1,190 @@
+# C-Keeper Configuration File
+# Dual-Use Cyber Kill Chain Engine Settings
+
+# Database Configuration
+database:
+  type: sqlite
+  path: data/ckeeper.db
+  # For PostgreSQL:
+  # type: postgresql
+  # host: localhost
+  # port: 5432
+  # database: ckeeper
+  # username: ckeeper
+  # password: your_password
+
+# Reconnaissance Module
+recon:
+  timeout: 30
+  threads: 10
+  port_range: "1-1000"
+  nmap_options: "-sS -sV -O"
+  wordlists: "data/wordlists"
+  max_hosts: 254
+
+# Exploit Builder Module
+exploit_builder:
+  exploit_db_path: "data/exploits"
+  custom_exploits_path: "data/custom_exploits"
+  templates_path: "data/templates"
+  auto_update: true
+  verification_enabled: true
+
+# Payload Generator Module
+payload_generator:
+  payloads_path: "data/payloads"
+  encoders:
+    - "base64"
+    - "hex"
+    - "xor"
+    - "caesar"
+  formats:
+    - "exe"
+    - "dll"
+    - "elf"
+    - "raw"
+    - "powershell"
+    - "python"
+  obfuscation: true
+  av_evasion: true
+
+# Delivery Engine Module
+delivery_engine:
+  methods:
+    - "http"
+    - "ftp"
+    - "email"
+    - "smb"
+  web_server_port: 8080
+  ftp_server_port: 21
+  email_server:
+    smtp_host: "smtp.gmail.com"
+    smtp_port: 587
+    username: ""
+    password: ""
+  file_hosting: true
+
+# C2 Handler Module
+c2_handler:
+  listeners:
+    http:
+      port: 443
+      ssl: true
+      certificate_path: "certs/server.crt"
+      key_path: "certs/server.key"
+    tcp:
+      port: 4444
+      bind_address: "0.0.0.0"
+    dns:
+      domain: "example.com"
+      port: 53
+  encryption: true
+  obfuscation: true
+  session_timeout: 3600
+  heartbeat_interval: 30
+
+# Exploit Runner Module
+exploit_runner:
+  timeout: 60
+  retries: 3
+  cleanup: true
+  verify_success: true
+  parallel_execution: false
+  max_concurrent: 5
+
+# Logger/Defender Module
+logger_defender:
+  log_level: "INFO"
+  log_file: "logs/defender.log"
+  detection_rules: "data/rules"
+  alert_threshold: 5
+  monitoring_enabled: true
+  baseline_update_interval: 3600
+  
+  # Real-time monitoring
+  monitor_processes: true
+  monitor_network: true
+  monitor_filesystem: true
+  monitor_registry: true  # Windows only
+  
+  # Alert settings
+  email_alerts: false
+  email_recipients: []
+  slack_webhook: ""
+  
+  # Threat intelligence
+  ioc_feeds:
+    - "https://example.com/iocs.json"
+  threat_hunting_enabled: true
+
+# General Settings
+general:
+  debug_mode: false
+  max_log_size: "10MB"
+  log_rotation: true
+  backup_retention_days: 30
+  
+  # Security settings
+  api_key: ""
+  rate_limiting: true
+  authentication_required: false
+  
+  # Performance settings
+  max_memory_usage: "2GB"
+  thread_pool_size: 20
+  cache_enabled: true
+  cache_size: "100MB"
+
+# Red Team Specific Settings
+red_team:
+  stealth_mode: false
+  evasion_techniques:
+    - "process_injection"
+    - "dll_sideloading"
+    - "living_off_the_land"
+  cleanup_after_execution: true
+  evidence_destruction: false
+
+# Blue Team Specific Settings
+blue_team:
+  forensics_mode: true
+  evidence_preservation: true
+  incident_response_enabled: true
+  automated_mitigation: false
+  quarantine_suspicious_files: true
+  
+  # Integration settings
+  siem_integration:
+    enabled: false
+    type: "splunk"  # splunk, elk, qradar
+    endpoint: ""
+    api_key: ""
+  
+  sandbox_integration:
+    enabled: false
+    type: "cuckoo"
+    endpoint: ""
+
+# Network Settings
+network:
+  proxy:
+    enabled: false
+    http_proxy: ""
+    https_proxy: ""
+    socks_proxy: ""
+  
+  dns:
+    servers:
+      - "8.8.8.8"
+      - "8.8.4.4"
+  
+  user_agents:
+    - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+
+# Plugin System
+plugins:
+  enabled: true
+  plugin_directory: "plugins"
+  auto_load: true
+  allowed_plugins: []

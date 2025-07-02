@@ -1,0 +1,81 @@
+name: C-Keeper CI/CD
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10, 3.11]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nmap netcat-traditional
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Initialize database
+      run: |
+        python scripts/init_db.py
+
+    - name: Run error check
+      run: |
+        python error_check.py
+
+    - name: Test CLI functionality
+      run: |
+        timeout 10s python ckeeper.py --cli || true
+
+  docker-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: |
+        docker build -t ckeeper .
+
+    - name: Test Docker environment
+      run: |
+        docker run --rm ckeeper python docker_test.py
+
+    - name: Test CLI in Docker
+      run: |
+        timeout 10s docker run --rm ckeeper python ckeeper.py --cli || true
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run Bandit Security Scan
+      uses: securecodewarrior/github-action-bandit@v1
+      with:
+        path: .
+        level: medium
+        confidence: medium
+        exit_zero: true
+
+    - name: Run Safety Check
+      run: |
+        pip install safety
+        safety check -r requirements.txt || true
