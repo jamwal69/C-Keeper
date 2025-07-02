@@ -1,0 +1,145 @@
+# Auto-Update Configuration for C-Keeper
+# This file controls the dynamic README update system
+
+# Repository settings
+repository:
+  name: "C-Keeper"
+  description: "Advanced Cyber Kill Chain Engine with Modern GUI and Docker Integration"
+  topics: ["penetration-testing", "security", "red-team", "blue-team", "docker", "cybersecurity"]
+
+# Update frequencies (in hours)
+update_schedule:
+  badges: 1         # Update badges every hour
+  statistics: 6     # Update stats every 6 hours
+  charts: 12        # Regenerate charts every 12 hours
+  deployment: 0.5   # Check deployment status every 30 minutes
+
+# Dynamic content sections
+sections:
+  badges:
+    enabled: true
+    auto_update: true
+    include:
+      - version
+      - build_status
+      - stars
+      - forks
+      - issues
+      - last_commit
+      - docker_pulls
+      - contributors
+
+  statistics:
+    enabled: true
+    auto_update: true
+    include:
+      - repository_stats
+      - docker_stats
+      - activity_chart
+      - contributor_stats
+
+  feature_matrix:
+    enabled: true
+    auto_update: true
+    check_status: true    # Actually test features
+    
+  deployment_status:
+    enabled: true
+    auto_update: true
+    platforms:
+      - docker_hub
+      - github_packages
+      - auto_deploy
+
+# External integrations
+integrations:
+  docker_hub:
+    enabled: false      # Set to true when Docker Hub is configured
+    username: ""        # Will be filled from secrets
+    repository: "c-keeper"
+    
+  github_packages:
+    enabled: true
+    registry: "ghcr.io"
+    
+  external_docs:
+    gitbook:
+      enabled: false
+      url: ""
+    notion:
+      enabled: false
+      page_id: ""
+
+# Feature status configuration
+features:
+  network_reconnaissance:
+    status: "🟢 Active"
+    cli: true
+    gui: true
+    docker: true
+    
+  exploit_development:
+    status: "🟢 Active"
+    cli: true
+    gui: true
+    docker: true
+    
+  payload_generation:
+    status: "🟢 Active"
+    cli: true
+    gui: true
+    docker: true
+    
+  c2_server:
+    status: "🟢 Active"
+    cli: true
+    gui: true
+    docker: true
+    
+  blue_team_ops:
+    status: "🟢 Active"
+    cli: true
+    gui: true
+    docker: true
+    
+  analytics_reports:
+    status: "🟢 Active"
+    cli: true
+    gui: true
+    docker: true
+    
+  auto_updates:
+    status: "🟡 Beta"
+    cli: true
+    gui: true
+    docker: true
+    
+  web_interface:
+    status: "🟡 Planned"
+    cli: false
+    gui: false
+    docker: "planned"
+
+# Chart configuration
+charts:
+  activity:
+    enabled: true
+    type: "bar"
+    days: 30
+    style: "dark"
+    
+  language_distribution:
+    enabled: true
+    type: "pie"
+    
+  commit_frequency:
+    enabled: true
+    type: "line"
+    days: 90
+
+# Notification settings
+notifications:
+  on_update: false      # Don't spam notifications
+  on_error: true        # Notify on update errors
+  channels:
+    - "github_issues"   # Create issue on error

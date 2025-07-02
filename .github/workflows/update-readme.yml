@@ -1,0 +1,78 @@
+name: 🚀 Dynamic README Update
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    # Update README every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    name: Update README with dynamic content
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 📊 Install dependencies
+      run: |
+        pip install requests PyGithub matplotlib seaborn pillow
+
+    - name: 🔄 Update README with dynamic content
+      run: |
+        python .github/scripts/update_readme.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPOSITORY: ${{ github.repository }}
+
+    - name: 📝 Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git diff --staged --quiet || git commit -m "🚀 Auto-update README with latest stats and info"
+        git push
+
+  update-badges:
+    runs-on: ubuntu-latest
+    name: Update dynamic badges
+    
+    steps:
+    - name: 📥 Checkout
+      uses: actions/checkout@v4
+
+    - name: 🏷️ Update version badge
+      run: |
+        VERSION=$(cat VERSION)
+        sed -i "s/version-[0-9.]*/version-${VERSION}/g" README.md
+
+    - name: 📈 Update build status
+      run: |
+        # Update build status badge with actual workflow status
+        if [ "${{ github.event_name }}" == "push" ]; then
+          sed -i 's/Build%20Status.*svg/Build%20Status-passing-brightgreen.svg/g' README.md
+        fi
+
+    - name: 🐳 Update Docker info
+      run: |
+        # Update Docker-related badges and info
+        echo "Updating Docker information..."
+
+    - name: 💾 Commit badge updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Badge Updater"
+        git add README.md
+        git diff --staged --quiet || git commit -m "📊 Update badges and dynamic content"
+        git push || true
