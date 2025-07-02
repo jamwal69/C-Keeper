@@ -12,16 +12,16 @@ def test_component(component_name, import_statement):
     """Test a single component"""
     try:
         exec(import_statement)
-        print(f"✅ {component_name}: OK")
+        print(f"[OK] {component_name}: OK")
         return True
     except Exception as e:
-        print(f"❌ {component_name}: ERROR - {str(e)}")
+        print(f"[ERROR] {component_name}: ERROR - {str(e)}")
         traceback.print_exc()
         return False
 
 def main():
     """Run comprehensive error check"""
-    print("🔍 C-KEEPER COMPREHENSIVE ERROR CHECK")
+    print("C-KEEPER COMPREHENSIVE ERROR CHECK")
     print("=" * 60)
     print("Testing all major components...")
     print()
@@ -58,29 +58,29 @@ def main():
     
     print()
     print("=" * 60)
-    print("📊 TEST RESULTS SUMMARY")
+    print("[SUMMARY] TEST RESULTS SUMMARY")
     print("=" * 60)
-    print(f"✅ Passed: {passed}")
-    print(f"❌ Failed: {failed}")
-    print(f"📈 Success Rate: {(passed/(passed+failed)*100):.1f}%")
+    print(f"[PASS] Passed: {passed}")
+    print(f"[FAIL] Failed: {failed}")
+    print(f"[RATE] Success Rate: {(passed/(passed+failed)*100):.1f}%")
     
     if failed == 0:
-        print("\n🎉 ALL COMPONENTS PASSED! No errors found.")
-        print("🚀 C-Keeper is ready for use!")
+        print("\n[SUCCESS] ALL COMPONENTS PASSED! No errors found.")
+        print("[READY] C-Keeper is ready for use!")
     else:
-        print(f"\n⚠️  {failed} component(s) have issues that need attention.")
+        print(f"\n[WARNING] {failed} component(s) have issues that need attention.")
     
     print("=" * 60)
     
     # Test main application entry point
-    print("\n🧪 Testing main application entry point...")
+    print("\n[TEST] Testing main application entry point...")
     try:
         from ckeeper import main
-        print("✅ Main application imports successfully")
+        print("[OK] Main application imports successfully")
     except Exception as e:
-        print(f"❌ Main application error: {str(e)}")
+        print(f"[ERROR] Main application error: {str(e)}")
     
-    print("\n🔧 Error check complete!")
+    print("\n[DONE] Error check complete!")
 
 if __name__ == "__main__":
     main()
