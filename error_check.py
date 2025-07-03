@@ -41,7 +41,6 @@ def main():
         ("Blue Team Operations", "import modules.logger_defender"),
         ("CLI Interface", "import interfaces.cli"),
         ("Modern GUI", "import interfaces.gui_modern"),
-        ("Ultra-modern GUI", "import interfaces.gui_ultra_modern"),
         ("Payload Methods", "import interfaces.payload_methods"),
         ("Database Init Script", "import scripts.init_db"),
     ]
