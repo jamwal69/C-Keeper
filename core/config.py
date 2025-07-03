@@ -74,7 +74,7 @@ class Config:
                 'listeners': {
                     'http': {'port': 443, 'ssl': True},
                     'tcp': {'port': 4444},
-                    'dns': {'domain': 'example.com'}
+                    'dns': {'domain': 'target.local'}
                 }
             },
             'exploit_runner': {
@@ -148,7 +148,7 @@ class C2HandlerConfig:
         self.listeners = config.get('listeners', {
             'http': {'port': 443, 'ssl': True},
             'tcp': {'port': 4444},
-            'dns': {'domain': 'example.com'}
+            'dns': {'domain': 'target.local'}
         })
         self.encryption = config.get('encryption', True)
         self.obfuscation = config.get('obfuscation', True)

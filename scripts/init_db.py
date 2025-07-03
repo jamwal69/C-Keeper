@@ -53,7 +53,7 @@ def _add_initial_data(db):
             },
             {
                 'type': 'domain',
-                'value': 'malware.example.com',
+                'value': 'malware.target.local',
                 'description': 'Example malware domain',
                 'confidence': 0.9
             },

@@ -15,11 +15,11 @@ setup(
     name="c-keeper",
     version="1.0.0",
     author="C-Keeper Team",
-    author_email="info@ckeeper.example.com",
+    author_email="jamwal69@outlook.com",
     description="Dual-Use Cyber Kill Chain Engine",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/example/c-keeper",
+    url="https://github.com/jamwal69/C-Keeper",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",

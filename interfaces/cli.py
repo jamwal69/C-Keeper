@@ -182,7 +182,7 @@ class CLIInterface(cmd.Cmd):
         Usage: set_target <IP/CIDR/domain>
         Examples: 
           set_target 192.168.1.100
-          set_target example.com
+          set_target 192.168.1.1
           set_target 10.0.0.0/24
         """
         if not target:

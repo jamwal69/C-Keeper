@@ -11,7 +11,7 @@ database:
   # port: 5432
   # database: ckeeper
   # username: ckeeper
-  # password: your_password
+  # password: your_secure_password
 
 # Reconnaissance Module
 recon:
@@ -76,7 +76,7 @@ c2_handler:
       port: 4444
       bind_address: "0.0.0.0"
     dns:
-      domain: "example.com"
+      domain: "target.local"
       port: 53
   encryption: true
   obfuscation: true
@@ -114,7 +114,7 @@ logger_defender:
   
   # Threat intelligence
   ioc_feeds:
-    - "https://example.com/iocs.json"
+    - "https://raw.githubusercontent.com/jamwal69/C-Keeper/main/data/threat-intel.json"
   threat_hunting_enabled: true
 
 # General Settings

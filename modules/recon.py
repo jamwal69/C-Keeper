@@ -347,7 +347,7 @@ class ReconModule:
             
             # Test anonymous login
             try:
-                ftp.login('anonymous', 'anonymous@example.com')
+                ftp.login('anonymous', 'anonymous@localhost')
                 info['ftp_anonymous'] = True
                 ftp.quit()
             except:
@@ -459,7 +459,7 @@ class ReconModule:
             import ftplib
             ftp = ftplib.FTP()
             ftp.connect(host, port, timeout=10)
-            ftp.login('anonymous', 'anonymous@example.com')
+            ftp.login('anonymous', 'anonymous@localhost')
             
             vulns.append({
                 'type': 'Anonymous FTP Access',
@@ -557,8 +557,8 @@ class ReconModule:
             server = smtplib.SMTP(host, port, timeout=10)
             # Test if server accepts mail for external domains
             try:
-                server.mail('test@example.com')
-                server.rcpt('test@external.com')
+                server.mail('test@localhost')
+                server.rcpt('test@target.local')
                 vulns.append({
                     'type': 'Open Mail Relay',
                     'severity': 'High',

@@ -1,0 +1,29 @@
+{
+  "threat_intelligence": {
+    "version": "1.0",
+    "last_updated": "2024-12-19",
+    "indicators": [
+      {
+        "type": "domain",
+        "value": "malware.target.local",
+        "category": "malicious",
+        "confidence": "high",
+        "description": "Known C2 domain for testing"
+      },
+      {
+        "type": "ip",
+        "value": "192.168.1.100",
+        "category": "suspicious",
+        "confidence": "medium",
+        "description": "Test IP for demonstration"
+      },
+      {
+        "type": "hash",
+        "value": "d41d8cd98f00b204e9800998ecf8427e",
+        "category": "malicious",
+        "confidence": "high",
+        "description": "Test hash for demonstration"
+      }
+    ]
+  }
+}
