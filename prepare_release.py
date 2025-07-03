@@ -82,7 +82,7 @@ Choose your preferred method:
 
 #### Manual Installation
 ```bash
-git clone https://github.com/yourusername/C-Keeper.git
+git clone https://github.com/jamwal69/C-Keeper.git
 cd C-Keeper
 pip install -r requirements.txt
 python scripts/init_db.py

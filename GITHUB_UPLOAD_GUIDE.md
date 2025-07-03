@@ -25,7 +25,7 @@ After creating the GitHub repository, GitHub will show you commands. Use these i
 cd "c:\Faizan Sir\Cyberkillchain\C-Keeper"
 
 # Add the GitHub repository as remote origin
-git remote add origin https://github.com/YOUR_USERNAME/C-Keeper.git
+git remote add origin https://github.com/jamwal69/C-Keeper.git
 
 # Rename the main branch to 'main' (GitHub standard)
 git branch -M main
@@ -34,7 +34,7 @@ git branch -M main
 git push -u origin main
 ```
 
-Replace `YOUR_USERNAME` with your actual GitHub username.
+Replace `jamwal69` with your actual GitHub username.
 
 ## Step 3: Verify Upload
 
@@ -141,8 +141,8 @@ Here are the exact commands to run in PowerShell:
 # Navigate to project
 cd "c:\Faizan Sir\Cyberkillchain\C-Keeper"
 
-# Add GitHub remote (replace YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/C-Keeper.git
+# Add GitHub remote (replace jamwal69)
+git remote add origin https://github.com/jamwal69/C-Keeper.git
 
 # Rename branch and push
 git branch -M main
@@ -152,11 +152,11 @@ git push -u origin main
 ## 🎉 Success!
 
 Once uploaded, your repository will be available at:
-`https://github.com/YOUR_USERNAME/C-Keeper`
+`https://github.com/jamwal69/C-Keeper`
 
 Users can then install and use C-Keeper with just:
 ```bash
-git clone https://github.com/YOUR_USERNAME/C-Keeper.git
+git clone https://github.com/jamwal69/C-Keeper.git
 cd C-Keeper
 ./quick-start.sh    # Linux/macOS
 # or

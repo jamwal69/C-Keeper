@@ -210,7 +210,7 @@ class READMEUpdater:
         
         # Update timestamp
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
-        footer = f"\n\n---\n\n<div align=\"center\">\n\n**🤖 This README is automatically updated** • Last update: {timestamp}\n\n[🚀 Try C-Keeper Now](#-one-click-installation) • [📖 Full Documentation](INSTALLATION.md) • [🐳 Docker Hub](https://hub.docker.com/r/yourusername/c-keeper)\n\n</div>\n"
+        footer = f"\n\n---\n\n<div align=\"center\">\n\n**🤖 This README is automatically updated** • Last update: {timestamp}\n\n[🚀 Try C-Keeper Now](#-one-click-installation) • [📖 Full Documentation](INSTALLATION.md) • [🐳 Docker Hub](https://hub.docker.com/r/jamwal69/c-keeper)\n\n</div>\n"
         
         # Add footer if not exists
         if '🤖 This README is automatically updated' not in content:

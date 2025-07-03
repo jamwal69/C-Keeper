@@ -24,7 +24,7 @@
 
 **Windows**: `curl -sSL https://bit.ly/ckeeper-win | cmd`  
 **Linux/macOS**: `curl -sSL https://bit.ly/ckeeper-nix | bash`  
-**Docker**: `docker run -it --rm -p 4444:4444 ghcr.io/yourusername/c-keeper:latest`
+**Docker**: `docker run -it --rm -p 4444:4444 ghcr.io/jamwal69/c-keeper:latest`
 
 </div>
 
@@ -102,17 +102,17 @@
 
 ### Windows
 ```batch
-curl -sSL https://raw.githubusercontent.com/yourusername/C-Keeper/main/quick-start.bat -o quick-start.bat && quick-start.bat
+curl -sSL https://raw.githubusercontent.com/jamwal69/C-Keeper/main/quick-start.bat -o quick-start.bat && quick-start.bat
 ```
 
 ### Linux/macOS
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/C-Keeper/main/quick-start.sh | bash
+curl -sSL https://raw.githubusercontent.com/jamwal69/C-Keeper/main/quick-start.sh | bash
 ```
 
 ### Docker (Any Platform)
 ```bash
-docker run -it --rm -p 4444:4444 ghcr.io/yourusername/c-keeper:latest
+docker run -it --rm -p 4444:4444 ghcr.io/jamwal69/c-keeper:latest
 ```
 
 </div>
@@ -181,7 +181,7 @@ The C-Keeper GUI has been completely redesigned with modern 2025 aesthetics:
 
 | Deployment Method | Command | Description |
 |-------------------|---------|-------------|
-| **🏃 Quick Start** | `docker run -it --rm ghcr.io/yourusername/c-keeper:latest` | Instant deployment |
+| **🏃 Quick Start** | `docker run -it --rm ghcr.io/jamwal69/c-keeper:latest` | Instant deployment |
 | **🔧 Development** | `docker-compose up --profile dev` | Development environment |
 | **🏢 Production** | `docker-compose up --profile prod` | Production deployment |
 | **🔴 Red Team** | `docker-compose up --profile redteam` | Offensive operations |
@@ -194,7 +194,7 @@ The C-Keeper GUI has been completely redesigned with modern 2025 aesthetics:
 # docker-compose.yml profiles
 services:
   ckeeper:
-    image: ghcr.io/yourusername/c-keeper:latest
+    image: ghcr.io/jamwal69/c-keeper:latest
     environment:
       - CKEEPER_MODE=${MODE:-dual}
       - CKEEPER_TARGET=${TARGET:-}
@@ -226,7 +226,7 @@ services:
 
 ```bash
 # Clone and setup development environment
-git clone https://github.com/yourusername/C-Keeper.git
+git clone https://github.com/jamwal69/C-Keeper.git
 cd C-Keeper
 
 # Docker development (recommended)
@@ -255,10 +255,10 @@ This repository features **automated synchronization**:
 
 | Metric | Status | Auto-Updated |
 |--------|---------|--------------|
-| 🔨 Build Status | ![Build](https://img.shields.io/github/workflow/status/yourusername/C-Keeper/CI?style=flat-square) | Every push |
-| 🧪 Test Coverage | ![Coverage](https://img.shields.io/codecov/c/github/yourusername/C-Keeper?style=flat-square) | Every commit |
-| 📦 Docker Pulls | ![Docker](https://img.shields.io/docker/pulls/yourusername/c-keeper?style=flat-square) | Hourly |
-| ⭐ GitHub Stars | ![Stars](https://img.shields.io/github/stars/yourusername/C-Keeper?style=flat-square) | Every 6 hours |
+| 🔨 Build Status | ![Build](https://img.shields.io/github/workflow/status/jamwal69/C-Keeper/CI?style=flat-square) | Every push |
+| 🧪 Test Coverage | ![Coverage](https://img.shields.io/codecov/c/github/jamwal69/C-Keeper?style=flat-square) | Every commit |
+| 📦 Docker Pulls | ![Docker](https://img.shields.io/docker/pulls/jamwal69/c-keeper?style=flat-square) | Hourly |
+| ⭐ GitHub Stars | ![Stars](https://img.shields.io/github/stars/jamwal69/C-Keeper?style=flat-square) | Every 6 hours |
 - **🔍 Advanced Reconnaissance**: Comprehensive target discovery and vulnerability assessment
 - **💥 Exploit Framework**: Custom exploit development and execution capabilities
 - **🎭 Payload Generation**: Advanced shellcode generation with encoding and obfuscation
@@ -475,7 +475,7 @@ If Docker isn't available, you can install manually:
 #### Quick Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/C-Keeper.git
+git clone https://github.com/jamwal69/C-Keeper.git
 cd C-Keeper
 
 # Install Python dependencies
@@ -845,7 +845,7 @@ C-Keeper has been recognized by the cybersecurity community:
 We welcome contributions from the security community:
 ```bash
 # Development setup
-git clone https://github.com/your-repo/C-Keeper.git
+git clone https://github.com/jamwal69/C-Keeper.git
 cd C-Keeper
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows

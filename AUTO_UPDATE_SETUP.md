@@ -35,8 +35,8 @@ Your C-Keeper project now features a **cutting-edge auto-updating README system*
 # Navigate to your project
 cd "c:\Faizan Sir\Cyberkillchain\C-Keeper"
 
-# Add GitHub remote (replace YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/C-Keeper.git
+# Add GitHub remote (replace jamwal69)
+git remote add origin https://github.com/jamwal69/C-Keeper.git
 
 # Push to GitHub
 git push -u origin main
@@ -87,8 +87,8 @@ DOCKER_PASSWORD=yourdockerhubtoken
 ### 🏷️ **Dynamic Badges**
 ```markdown
 ![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![Stars](https://img.shields.io/github/stars/yourusername/C-Keeper)
-![Build](https://img.shields.io/github/workflow/status/yourusername/C-Keeper/CI)
+![Stars](https://img.shields.io/github/stars/jamwal69/C-Keeper)
+![Build](https://img.shields.io/github/workflow/status/jamwal69/C-Keeper/CI)
 ```
 
 ### 📈 **Live Statistics Table**
