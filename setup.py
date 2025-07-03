@@ -15,7 +15,7 @@ setup(
     name="c-keeper",
     version="1.0.0",
     author="C-Keeper Team",
-    author_email="jamwal69@outlook.com",
+    author_email="jamwalmaanv69@gmail.com",
     description="Dual-Use Cyber Kill Chain Engine",
     long_description=long_description,
     long_description_content_type="text/markdown",
